@@ -27,9 +27,8 @@ var Lightcurves = MyBookshelf.Collection.extend({
 function show(id) {
   var resolver = Promise.pending();
 
-  new Lightcurve({astro_obj_id: id}).query(function(qb) {
-    
-    qb.orderBy('mjd', 'ASC');
+  new Lightcurve().query(function(qb) {
+    qb.where('astro_obj_id', '=', id).orderBy('mjd', 'ASC');
   }).fetchAll().then(function(lightcurve) {
     resolver.resolve(lightcurve.toJSON());
   });
