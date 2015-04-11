@@ -13,7 +13,7 @@
   </tr>
 </table>
 
-##エネルギー帯
+##エネルギー帯(Band)
 <table>
   <tr>
     <td>id</td>
@@ -25,7 +25,7 @@
   </tr>
 </table>
 
-##天体種別
+##天体種別(Astro Class)
 <table>
   <tr>
     <td>id</td>
