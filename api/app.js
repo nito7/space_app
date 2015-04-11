@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 
 var watches      = require('./routes/watches');
+var lightcurves  = require('./routes/lightcurves');
 var astroObjs    = require('./routes/astro_objs');
 var astroClasses = require('./routes/astro_classes');
 
@@ -23,8 +24,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/watches', watches);
-app.use('/astroObjs', astroObjs);
+app.use('/watches',      watches);
+app.use('/lightcurves',  lightcurves);
+app.use('/astroObjs',    astroObjs);
 app.use('/astroClasses', astroClasses);
 
 // catch 404 and forward to error handler

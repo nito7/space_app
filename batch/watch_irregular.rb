@@ -41,13 +41,13 @@ summary.each do |k, v|
   v.each do |list|
     flx_mean += list[1]
   end
-  flx_mean = flux_mean / v.length
+  flx_mean = flx_mean / v.length
   flx_rate = flx / flx_mean.to_f
   astro_id = k.split(":")[0].to_i
   
-  if threshold * flx_mean + err_today < flx_today then
+  if threshold * flx_mean + err < flx then
     begin
-      st_insert.execute(mjd, astro_id, flux_rate)
+      st_insert.execute(mjd, astro_id, flx_rate)
     ensure
       st_insert.close
       break

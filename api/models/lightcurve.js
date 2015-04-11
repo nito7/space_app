@@ -22,17 +22,26 @@ var Lightcurves = MyBookshelf.Collection.extend({
   model: Lightcurve
 });
 
-
 /*---------- ここにメソッド記述 ----------*/
 
+function show(id) {
+  var resolver = Promise.pending();
 
-
+  new Lightcurve({astro_obj_id: id}).query(function(qb) {
+    
+    qb.orderBy('mjd', 'ASC');
+  }).fetchAll().then(function(lightcurve) {
+    resolver.resolve(lightcurve.toJSON());
+  });
+  
+  return resolver.promise;
+}
 
 /*---------- 公開メソッドの指定 ----------*/
 
 module.exports = {
   model: Lightcurve,
   methods: {
-
+    show: show
   }
 }
