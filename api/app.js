@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 
 var watches      = require('./routes/watches');
+var astroObjs    = require('./routes/astro_objs');
 var astroClasses = require('./routes/astro_classes');
 
 var app          = express();
