@@ -5,9 +5,9 @@ module.exports = {
     client: 'mysql',
     connection: {
       host:     '127.0.0.1',
-      database: 'transient_watch',
-      user:     'akiho',
-      password: 'akiho'
+      database: 'space_app',
+      user:     'root',
+      password: 'root'
     },
     pool: {
       min: 2,
@@ -26,9 +26,9 @@ module.exports = {
     client: 'mysql',
     connection: {
       host:     '127.0.0.1',
-      database: 'transient_watch',
-      user:     'akiho',
-      password: 'akiho'
+      database: 'space_app',
+      user:     'root',
+      password: 'root'
     },
     pool: {
       min: 2,
@@ -44,9 +44,9 @@ module.exports = {
     client: 'mysql',
     connection: {
       host:     '127.0.0.1',
-      database: 'transient_watch',
-      user:     'akiho',
-      password: 'akiho'
+      database: 'space_app',
+      user:     'root',
+      password: 'root'
     },
     pool: {
       min: 2,

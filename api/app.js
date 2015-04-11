@@ -23,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/watches', watches);
+app.use('/astroObjs', astroObjs);
 app.use('/astroClasses', astroClasses);
 
 // catch 404 and forward to error handler
