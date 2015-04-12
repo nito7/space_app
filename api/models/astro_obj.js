@@ -27,7 +27,7 @@ var AstroObjs = MyBookshelf.Collection.extend({
 function index() {
   var resolver = Promise.pending();
   
-  AstroObjs.forge().fetch().then(function (astro_objs) {
+  AstroObjs.forge().fetch({withRelated: ["astroClass"]}).then(function (astro_objs) {
     resolver.resolve(astro_objs.toJSON());
   });
 

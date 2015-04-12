@@ -5,17 +5,17 @@ require 'mysql'
 
 tables     = ["watches", "lightcurves"]
 connection = Mysql::new("127.0.0.1", "root", "root", "space_app")
+state      = connection.prepare("select * from watches");
 
-tables.each do |tbl|
-  p tbl
-  begin
-    result = state.execute(tbl)
+begin
+  tables.each do |tbl|
+    result = state.execute()
     result.each do |tuple|
       p tuple
     end
-  ensure
-    state.close
   end
+ensure
+  state.close
 end
 
 connection.close()

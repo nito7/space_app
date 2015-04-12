@@ -5,8 +5,8 @@ require 'mysql'
 require 'date'
 require 'bigdecimal'
 
-threshold  = 0.5
-err_rate   = 0.5
+threshold  = 1
+err_rate   = 1
 
 summary    = {}
 since_mjd  = (Date.today - 7).mjd;
@@ -54,15 +54,26 @@ begin
     end
     
     v.each do |list|
-      flx_mean += list[1]
+      if list[1] > 0 then
+        flx_mean += list[1]
+      end
     end
+
     flx_mean = flx_mean / v.length.to_f
+    if flx_mean == 0 then
+      next
+    end
+
     flx_rate = flx / flx_mean.to_f * 100
     astro_id = k.split(":")[0].to_i
 
+    puts " ---- "
+    p astro_id
     p flx_rate
+    p flx
+    p flx_mean
+
     flx_rate = BigDecimal(flx_rate.to_s).floor(2).to_f
-    p flx_rate
      
     if threshold * flx_mean + err_rate * err < flx then 
       st_insert.execute(mjd, astro_id, flx_rate)
